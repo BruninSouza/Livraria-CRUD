@@ -16,8 +16,8 @@ class Gui():
     txt_idioma = StringVar()
     txt_editora = StringVar() 
     txt_ano = StringVar() 
-    txt_reais = IntVar()
-    txt_centavos = IntVar()
+    txt_reais = StringVar()
+    txt_centavos = StringVar()
 
     # Labels
     lbl_autor = Label(window, text="Autor")
@@ -87,6 +87,7 @@ class Gui():
     btnDel.grid(row=11, column=0, columnspan=2, sticky='W')
     btnClose.grid(row=12, column=0, columnspan=2, sticky='W')
 
+    # Configura dimensionamento
     for child in window.winfo_children():
 
         Widget_class = child.__class__.__name__
@@ -109,5 +110,6 @@ class Gui():
         for i in range(3):
             window.grid_columnconfigure(i, weight=1)
 
+    # Faz a interface rodar em loop
     def run(self):
         Gui.window.mainloop()
