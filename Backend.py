@@ -54,6 +54,9 @@ def initDB():
 
 # Adiciona um novo livro ao banco de dados
 def insert(autor, titulo, idioma, editora, ano, reais, centavos):
+    print(f"Tipo de autor: {type(autor)}; valor: {autor!r}")
+    print(f"Tipo de titulo: {type(titulo)}; valor: {titulo!r}")
+    # ... idem para os outros campos
     trans = TransactionObjetc()
     trans.connect()
     trans.execute("INSERT INTO biblioteca VALUES(NULL, ?,?,?,?,?,?,?)",\
@@ -98,5 +101,3 @@ def update(id, autor, titulo, idioma, editora, ano, reais, centavos):
     trans.disconnect()
     
 initDB()
-
-

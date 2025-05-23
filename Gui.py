@@ -64,7 +64,7 @@ class Gui():
 
     # Listbox e Scrollbar
     listBiblioteca.grid(row=0, column=2, rowspan=12, sticky='NSEW')
-    ScrollBiblioteca.grid(row=0, column=6, rowspan=12,  sticky='NSE')
+    ScrollBiblioteca.grid(row=0, column=3, rowspan=12,  sticky='NSE')
 
     listBiblioteca.configure(yscrollcommand=ScrollBiblioteca.set)
     ScrollBiblioteca.configure(command=listBiblioteca.yview)
@@ -113,3 +113,4 @@ class Gui():
     # Faz a interface rodar em loop
     def run(self):
         Gui.window.mainloop()
+
