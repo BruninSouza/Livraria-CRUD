@@ -82,13 +82,11 @@ __pycache__/
 
 ## 📈 Melhorias Futuras
 
-    Implementar busca parcial com LIKE (ex: digitar "Bruno" e retornar "Bruno Souza")
-
-    Exportar/Importar dados em CSV
-
-    Melhor validação de dados
-
-    Paginação para grandes volumes de registros
+- Implementar busca parcial com LIKE (ex: digitar "Bruno" e retornar "Bruno Souza")
+- Exportar/Importar dados em CSV
+- Melhor validação de dados
+- Paginação para grandes volumes de registros
+- Integração com um sistema de vendas de livros (permitindo controle de estoque, pedidos e clientes)
 
 ### 👤 Autor
 
