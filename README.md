@@ -1,10 +1,8 @@
-# Sistema de Biblioteca – Tkinter + SQLite
+# Sistema de Livraria – Tkinter + SQLite
 
 ## 📚 Descrição
 
-Este projeto é uma aplicação de gerenciamento de biblioteca desenvolvida em Python. Utiliza a biblioteca Tkinter para a interface gráfica e SQLite para persistência de dados. O sistema permite cadastrar, visualizar, atualizar, pesquisar e excluir livros com informações como autor, título, idioma, editora, ano e preço (separado em reais e centavos).
-
----
+Este projeto é uma aplicação de gerenciamento de uma livraria desenvolvida em Python. Utiliza a biblioteca Tkinter para a interface gráfica e SQLite para persistência de dados. 
 
 ## 🛠️ Funcionalidades
 
@@ -17,17 +15,18 @@ Este projeto é uma aplicação de gerenciamento de biblioteca desenvolvida em P
 - 🖥️ Interface gráfica com preenchimento automático ao selecionar registros
 - 🧠 Armazenamento automático no banco SQLite local
 
----
-
 ## 🗂️ Estrutura do Projeto
 
 ```bash
 biblioteca/
+├── .gitignore            # Arquivo de exclusão do Git
 ├── main.py               # Código principal com lógica e integração entre GUI e backend
 ├── backend.py            # Operações com o banco de dados (CRUD com SQLite)
 ├── gui.py                # Interface gráfica com Tkinter
 ├── biblioteca.db         # Banco de dados gerado automaticamente
+├── LICENSE               # Licensa MIT
 └── README.md             # Este arquivo
+
 ```
 
 ## Como Usar
@@ -37,7 +36,7 @@ biblioteca/
     Clone este repositório:
 
 git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+cd nome-do-repositório
 
 Execute o arquivo principal:
 
@@ -52,36 +51,34 @@ Execute o arquivo principal:
     Tkinter (já incluso com Python padrão)
 
 ## 🗃️ Sobre o banco de dados
+O banco é criado automaticamente no primeiro uso com a seguinte tabela:
 
-    Usa SQLite (biblioteca.db)
+```
+CREATE TABLE IF NOT EXISTS biblioteca (
+    id INTEGER PRIMARY KEY,
+    autor VARCHAR,
+    titulo VARCHAR,
+    idioma VARCHAR,
+    editora VARCHAR,
+    ano TEXT,
+    reais INTEGER,
+    centavos INTEGER
+)
+```
 
-    Criação automática da tabela biblioteca na primeira execução
-
-    Campos:
-
-        id (chave primária)
-
-        autor (texto)
-
-        titulo (texto)
-
-        idioma (texto)
-
-        editora (texto)
-
-        ano (texto)
-
-        reais (inteiro)
-
-        centavos (inteiro)
+## .gitignore
+Este projeto inclui um arquivo .gitignore para evitar o versionamento de arquivos desnecessários, como os arquivos compilados do Python:
+```
+# Ignorar cache do Python
+__pycache__/
+*.py[cod]
+```
 
 ## ⚙️ Observações Técnicas
 
     A busca utiliza OR entre os campos, retornando registros que contenham qualquer correspondência.
 
-    O sistema armazena valores textuais com espaços corretamente como strings normais no banco (ex: "Bruno Souza").
-
-    A pasta __pycache__ é gerada automaticamente pelo Python para armazenar arquivos compilados. Pode ser ignorada ou adicionada ao .gitignore.
+    A pasta __pycache__ é gerada automaticamente pelo Python para armazenar arquivos compilados. 
 
 ## 📈 Melhorias Futuras
 
@@ -91,14 +88,12 @@ Execute o arquivo principal:
 
     Melhor validação de dados
 
-    Filtros por campo (ex: ano ou editora)
-
     Paginação para grandes volumes de registros
 
 ### 👤 Autor
 
-Bruno Souza – [@BruninSouz](https://github.com/BruninSouza)
+Bruno Souza – [@BruninSouza](https://github.com/BruninSouza)
 
 ### 📝 Licença
 
-Este projeto está licenciado sob a MIT License.
+Este projeto está licenciado sob a [Licensa MIT](LICENSE).
