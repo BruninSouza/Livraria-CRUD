@@ -1,7 +1,7 @@
 import sqlite3 as sql
 
 class TransactionObjetc():
-    database = "./python/Pratica/teste-python-dados/POO/biblioteca.db"
+    database = "biblioteca.db"
     conn = None
     cur = None
     connected = False
@@ -40,7 +40,7 @@ def initDB():
     trans.connect()
 
     trans.execute("CREATE TABLE IF NOT EXISTS biblioteca (id INTEGER PRIMARY KEY, autor TEXT, titulo TEXT" \
-    ", idioma TEXT, editora TEXT, ano INTEGER, reais INTEGER, centavos INTEGER)")
+    ", idioma TEXT, editora TEXT, ano TEXT, reais INTEGER, centavos INTEGER)")
 
     trans.persist()
     trans.disconnect()

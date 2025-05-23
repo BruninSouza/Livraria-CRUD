@@ -1,44 +1,76 @@
-# Tkinter é um módulo usado para desenvolver interface gráfica em python
 from tkinter import *
 
 class Gui():
-    """Classe de interface gráfica 
-    (Graphical User interface ou GUI)"""
 
-    # Pads são para simbolizar o "padding" (distânciamento) dos conteudos da interface em relação à borda
     x_pad = 5
     y_pad = 3
-
-    # Width serve para definir a largura que a janela terá
     width_entry = 30
 
-    # Para criar um janela 
-    window = Tk() # Tk serve para utilizar a biblioteca tkinter
-    window.wm_title("Cadastro") # O nome da aplicação é escrito dentro dos parenteses
+    window = Tk() 
+    window.wm_title("Cadastro Livros")
+    window.resizable(True, True)
 
-    # Definição das variáveis que recebem os dados inseridos pelo user
-    txtAutor = StringVar()
-    txtTitulo = StringVar()
-    txtEmail = StringVar()
-    txtCPF = StringVar() 
+    # Variáveis
+    txt_autor = StringVar()
+    txt_titulo = StringVar()
+    txt_idioma = StringVar()
+    txt_editora = StringVar() 
+    txt_ano = StringVar() 
+    txt_reais = IntVar()
+    txt_centavos = IntVar()
 
-    # Criando objetos que farão parte das janelas
-    lblnome = Label(window, text="Nome")
-    lblsobrenome = Label(window, text="Sobrenome")
-    lblemail = Label(window, text="email")
-    lblCPF = Label(window, text="CPF")
+    # Labels
+    lbl_autor = Label(window, text="Autor")
+    lbl_titulo = Label(window, text="Título")
+    lbl_idioma = Label(window, text="Idioma")
+    lbl_editora = Label(window, text="Editora")
+    lbl_ano = Label(window, text="Ano de Lançamento")
+    lbl_preco = Label(window, text="Preço (R$)")
 
     # Entradas
-    entNome = Entry(window, textvariable=txtNome, width=width_entry)
-    entSobrenome = Entry(window, textvariable=txtSobrenome, width=width_entry)
-    entEmail = Entry(window, textvariable=txtEmail, width=width_entry)
-    entCPF = Entry(window, textvariable=txtCPF, width=width_entry)
+    ent_autor = Entry(window, textvariable=txt_autor, width=width_entry)
+    ent_titulo = Entry(window, textvariable=txt_titulo, width=width_entry)
+    ent_idioma = Entry(window, textvariable=txt_idioma, width=width_entry)
+    ent_editora = Entry(window, textvariable=txt_editora, width=width_entry)
+    ent_ano = Entry(window, textvariable=txt_ano, width=width_entry)
 
-    # Lista de clientes e scroll para a mesma
-    listClientes = Listbox(window, width=100)
-    ScrollClientes = Scrollbar(window)
+    # Entradas de preços com reais e centavos
+    frame_preco = Frame(window)
+    ent_preco_reais = Entry(frame_preco, textvariable=txt_reais, width=5)
+    ent_preco_centavos = Entry(frame_preco, textvariable=txt_centavos, width=5)
+    ent_preco_reais.pack(side=LEFT)
+    Label(frame_preco, text=",").pack(side=LEFT)
+    ent_preco_centavos.pack(side=LEFT)
 
-    # Botões
+    # Listbox e Scroll
+    listBiblioteca = Listbox(window, width=100)
+    ScrollBiblioteca = Scrollbar(window)
+
+    # Grid de labels
+    lbl_autor.grid(row=0, column=0, sticky='W')
+    lbl_titulo.grid(row=1, column=0, sticky='W')
+    lbl_idioma.grid(row=2, column=0, sticky='W')
+    lbl_editora.grid(row=3, column=0, sticky='W')
+    lbl_ano.grid(row=4, column=0, sticky='W')
+    lbl_preco.grid(row=5, column=0, sticky='W')
+
+    # Grid de entradas
+    ent_autor.grid(row=0, column=1, sticky='WE')
+    ent_titulo.grid(row=1, column=1, sticky='WE')
+    ent_idioma.grid(row=2, column=1, sticky='WE')
+    ent_editora.grid(row=3, column=1, sticky='WE')
+    ent_ano.grid(row=4, column=1, sticky='WE') 
+    frame_preco.grid(row=5, column=1, sticky="W", padx=x_pad, pady=y_pad)
+
+    # Listbox e Scrollbar
+    listBiblioteca.grid(row=0, column=2, rowspan=12, sticky='NSEW')
+    ScrollBiblioteca.grid(row=0, column=6, rowspan=12,  sticky='NSE')
+
+    listBiblioteca.configure(yscrollcommand=ScrollBiblioteca.set)
+    ScrollBiblioteca.configure(command=listBiblioteca.yview)
+
+    # Botões dentro do frame
+    btnClear = Button(window, text="Limpar seleção")
     btnViewAll = Button(window, text="Vê todos")
     btnBuscar = Button(window, text="Buscar")
     btnInserir = Button(window, text="Inserir")
@@ -46,43 +78,36 @@ class Gui():
     btnDel = Button(window, text="Deletar Selecionados")
     btnClose = Button(window, text="Fechar")
 
-    # Associando objetos
-    lblnome.grid(row=0, column=0)
-    lblsobrenome.grid(row=1, column=0)
-    lblemail.grid(row=2, column=0)
-    lblCPF.grid(row=3, column=0)
+    # Grid dos botões dentro do frame
+    btnClear.grid(row=6, column=0, columnspan=2, sticky="W")
+    btnViewAll.grid(row=7, column=0, columnspan=2, sticky='W')
+    btnBuscar.grid(row=8, column=0, columnspan=2, sticky='W')
+    btnInserir.grid(row=9, column=0, columnspan=2, sticky='W')
+    btnUpdate.grid(row=10, column=0, columnspan=2, sticky='W')
+    btnDel.grid(row=11, column=0, columnspan=2, sticky='W')
+    btnClose.grid(row=12, column=0, columnspan=2, sticky='W')
 
-    entNome.grid(row=0, column=1, padx=50, pady=50)
-    entSobrenome.grid(row=1, column=1)
-    entEmail.grid(row=2, column=1)
-    entCPF.grid(row=3, column=1)
-
-    listClientes.grid(row=0, column=2, rowspan=10)
-    ScrollClientes.grid(row=0, column=6, rowspan=10)
-
-    btnViewAll.grid(row=4, column=0, columnspan=2)
-    btnBuscar.grid(row=5, column=0, columnspan=2)
-    btnInserir.grid(row=6, column=0, columnspan=2)
-    btnUpdate.grid(row=7, column=0, columnspan=2)
-    btnDel.grid(row=8, column=0, columnspan=2)
-    btnClose.grid(row=9, column=0, columnspan=2)
-
-    # União de scrollbar com listbox
-    listClientes.configure(yscrollcommand=ScrollClientes.set)
-    ScrollClientes.configure(command=listClientes.yview)
-
-    # Adicionando aparência à interface
     for child in window.winfo_children():
+
         Widget_class = child.__class__.__name__
 
         if Widget_class == "Button":
             child.grid_configure(padx=x_pad, pady=y_pad, sticky='WE')
+
         elif Widget_class == "Listbox":
-            child.grid_configure(padx=0, pady=0, sticky='NS')
+            child.grid_configure(padx=0, pady=0, sticky='NSEW')
+
         elif Widget_class == "Scrollbar":
-            child.grid_configure(padx=0, pady=0, sticky='NS')
+            child.grid_configure(padx=0, pady=0, sticky='NSEW')
+
         else:
-            child.grid_configure(padx=x_pad, pady=y_pad, sticky='N')
+            child.grid_configure(padx=x_pad, pady=y_pad, sticky='W')
+        
+        for i in range(13):
+            window.grid_rowconfigure(i, weight=1)
+
+        for i in range(3):
+            window.grid_columnconfigure(i, weight=1)
 
     def run(self):
         Gui.window.mainloop()
