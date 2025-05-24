@@ -46,8 +46,8 @@ def initDB():
     trans = TransactionObjetc()
     trans.connect()
 
-    trans.execute("CREATE TABLE IF NOT EXISTS biblioteca (id INTEGER PRIMARY KEY, autor VARCHAR, titulo VARCHAR" \
-    ", idioma VARCHAR, editora VARCHAR, ano TEXT, reais INTEGER, centavos INTEGER)")
+    trans.execute("CREATE TABLE IF NOT EXISTS biblioteca (id INTEGER PRIMARY KEY, autor TEXT, titulo TEXT" \
+    ", idioma TEXT, editora TEXT, ano TEXT, reais INTEGER, centavos INTEGER)")
 
     trans.persist()
     trans.disconnect()

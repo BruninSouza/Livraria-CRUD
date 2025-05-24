@@ -69,7 +69,7 @@ def insert_command():
             return ano.isdigit() and len(ano) <= 4
 
         if not validar_ano(ano):
-            messagebox.showerror("Erro", "Ano inválido. Digite um ano apenas com 4 Números.")
+            messagebox.showerror("Erro", "Ano inválido. Verifique o campo e tente novamente.")
             return
 
         core.insert(
@@ -112,7 +112,7 @@ def update_command():
             return ano.isdigit() and len(ano) <= 4
 
         if not validar_ano(ano):
-            messagebox.showerror("Erro", "Ano inválido. Digite um ano com 4 dígitos.")
+            messagebox.showerror("Erro", "Ano inválido. Verifique o campo e tente novamente.")
             return
 
         core.update(
