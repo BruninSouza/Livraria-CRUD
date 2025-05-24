@@ -63,8 +63,14 @@ def insert_command():
 
         if centavos >= 100:
             reais += centavos // 100
-            centavos = centavos % 100
-
+            centavos %= 100
+        elif centavos < 0 and centavos >= -100:
+            reais -= 1
+            centavos %= 100
+        elif centavos < -100:
+            reais += centavos // 100
+            centavos %= 100
+            
         def validar_ano(ano):
             return ano.isdigit() and len(ano) <= 4
 
@@ -106,7 +112,13 @@ def update_command():
 
         if centavos >= 100:
             reais += centavos // 100
-            centavos = centavos % 100
+            centavos %= 100
+        elif centavos < 0 and centavos >= -100:
+            reais -= 1
+            centavos %= 100
+        elif centavos < -100:
+            reais += centavos // 100
+            centavos %= 100
 
         def validar_ano(ano):
             return ano.isdigit() and len(ano) <= 4
